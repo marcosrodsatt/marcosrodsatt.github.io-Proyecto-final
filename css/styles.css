@@ -64,10 +64,12 @@ nav a {
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  display: flex;
+
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: .25rem;;
 }
 
 .site-header a {

@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/styleslogin.css" rel="stylesheet">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -18,18 +19,28 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+    <div class="pelota pelota1"></div>
+  <div class="pelota pelota2"></div>
+  <div class="pelota pelota3"></div>
+  <div class="pelota pelota4"></div>
+  <div class="pelota pelota5"></div>
+
+  <!-- Caja de login -->
+  <div class="login-box" id="loginBox">
+    <h2>¡Bienvenido a e-Commerce!</h2>
+    <form>
+      <input id="username" type="text" placeholder="Usuario">
+      <input id="password" type="password" placeholder="Contraseña">
+      <button type="button" id="submitbttn">Ingresar</button>
+    </form>
+  </div>
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+        <a href="#">Volver arriba</a></p> 
+        </div>
+      <div><p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <script src="js/login.js"></script>
