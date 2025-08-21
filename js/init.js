@@ -39,3 +39,14 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+
+ 
+
+// Si no hay sesión iniciada → volver al login
+  if (!sessionStorage.getItem("user")) {
+    alert ("Debes iniciar sesión")
+    window.location.href = "login.html";
+  }
+});   
