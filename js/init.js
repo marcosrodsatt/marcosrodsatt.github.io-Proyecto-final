@@ -42,11 +42,29 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(){
 
- 
-
 // Si no hay sesión iniciada → volver al login
   if (!sessionStorage.getItem("user")) {
     alert ("Debes iniciar sesión")
     window.location.href = "login.html";
+  }
+
+  const username = sessionStorage.getItem('user');
+  const navList = document.querySelector('.navbar-nav');
+  
+  /* Condicionante para agreagar el item al navbar*/
+  if (username && navList) {
+    const userHtml = `
+      <li class="nav-item">
+        <div class="nav-link">
+          ${username}
+        </div>
+      </li>`;
+    
+    const emptyLi = navList.querySelector('li:last-child');
+    if (emptyLi) {
+      navList.removeChild(emptyLi);
+    }
+    
+    navList.innerHTML += userHtml;
   }
 });   
