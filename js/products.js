@@ -48,14 +48,11 @@ function showProductList(){
             ((maxCount == undefined) || (parseInt(product.soldCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${product.name}</h4>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" onclick="setCatID(${product.id})">
+                    <div class="card h-100 shadow-sm cursor-active">
+                        <img src="${product.image}" alt="${product.description}" class="card-img-top">
+                    <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
                             <small class="text-muted">${product.soldCount} vendidos</small>
                         </div>
                         <p class="mb-1">${product.description}</p>
