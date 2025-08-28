@@ -26,14 +26,20 @@
   <div class="pelota pelota5"></div>
 
   <!-- Caja de login -->
-  <div class="login-box" id="loginBox">
-    <h2>¡Bienvenido a e-Commerce!</h2>
-    <form>
-      <input id="username" type="text" placeholder="Usuario">
-      <input id="password" type="password" placeholder="Contraseña">
-      <button type="button" id="submitbttn">Ingresar</button>
-    </form>
-  </div>
+<div class="login-box card shadow-lg border-0 p-4 col-11 col-sm-8 col-md-6 col-lg-4" id="loginBox">
+  <h2 class="text-center mb-4 fw-bold">¡Bienvenido a e-Commerce!</h2>
+  <form>
+    <div class="mb-3">
+      <input id="username" type="text" class="form-control form-control-lg" placeholder="Usuario" required>
+    </div>
+    <div class="mb-3">
+      <input id="password" type="password" class="form-control form-control-lg" placeholder="Contraseña" required>
+    </div>
+    <button type="button" id="submitbttn" class="btn btn-primary btn-lg w-100">
+      Ingresar
+    </button>
+  </form>
+</div>
   </main>
   <footer class="text-muted">
     <div class="container">
