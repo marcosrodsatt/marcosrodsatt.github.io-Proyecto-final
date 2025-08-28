@@ -49,14 +49,17 @@ body {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   transition: all 0.3s ease;
+  min-width: 320px;
+  max-width: 400px;
 }
 
 /* Ajuste de título */
 .login-box h2 {
   color: #222;
   font-weight: 700;
+  white-space: normal;
+  word-break: keep-all;
 }
-
 /* RESPONSIVE */
 
 /* Tablets verticales (≤1024px) */
