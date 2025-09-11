@@ -38,6 +38,11 @@ function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html";
 }
+
+function setProdId(id) {
+    localStorage.setItem("prodID", id);
+     window.location = "product-info.html";
+}
 /*Funcion para agregar los productos en forma de div*/
 function showProductList(){
     let htmlContentToAppend = "";
@@ -80,7 +85,14 @@ function sortAndShowProducts(sortCriteria, productsArray){
 
 /*Escuchador de eventos para cada producto*/
 document.addEventListener("DOMContentLoaded", function(e){
+
+    let catID = localStorage.getItem("catID");
+    let url = PRODUCTS_URL + catID + EXT_TYPE; //modificado para llevar a cada categoria a su producto
+    
+    getJSONData(url).then(function(resultObj){
+
     getJSONData(PRODUCTS_URL).then(function(resultObj){
+
         if (resultObj.status === "ok"){
             console.log("Productos cargados:", resultObj.data); 
             currentProductsArray = resultObj.data.products;
