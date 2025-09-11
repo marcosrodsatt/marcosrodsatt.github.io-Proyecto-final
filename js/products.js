@@ -86,7 +86,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
 /*Escuchador de eventos para cada producto*/
 document.addEventListener("DOMContentLoaded", function(e){
     let catID = localStorage.getItem("catID");
-    let url = PRODUCTS_URL + catID + EXT_TYPE;
+    let url = PRODUCTS_URL + catID + EXT_TYPE; //modificado para llevar a cada categoria a su producto
     
     getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok"){
