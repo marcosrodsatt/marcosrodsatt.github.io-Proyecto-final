@@ -36,7 +36,7 @@ function sortProducts(criteria, array){
 
 function setCatID(id) {
     localStorage.setItem("catID", id);
-     window.location = "products.html";
+    window.location = "products.html";
 }
 
 function setProdId(id) {
@@ -85,14 +85,16 @@ function sortAndShowProducts(sortCriteria, productsArray){
 
 /*Escuchador de eventos para cada producto*/
 document.addEventListener("DOMContentLoaded", function(e){
+
     let catID = localStorage.getItem("catID");
     let url = PRODUCTS_URL + catID + EXT_TYPE; //modificado para llevar a cada categoria a su producto
     
     getJSONData(url).then(function(resultObj){
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+
         if (resultObj.status === "ok"){
-            let data = resultObj.data;
-            document.getElementById("catName").innerHTML = data.catName;
-            document.getElementById("catDescription").innerHTML = data.catDescription; 
+            console.log("Productos cargados:", resultObj.data); 
             currentProductsArray = resultObj.data.products;
             sortAndShowProducts(ORDER_BY_PROD_COUNT, currentProductsArray);
         }
