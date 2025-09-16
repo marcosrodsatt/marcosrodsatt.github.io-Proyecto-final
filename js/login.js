@@ -33,8 +33,7 @@ const loginBox = document.getElementById("loginBox");
     // Guardar en sesión
     sessionStorage.setItem("user", username);
 
-    // Redirigir
-    window.location.href = "index.html";
+    
   })
   });
 
