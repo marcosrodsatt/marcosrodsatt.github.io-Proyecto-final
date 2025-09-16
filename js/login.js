@@ -20,7 +20,7 @@ const loginBox = document.getElementById("loginBox");
 
     submitbttn.addEventListener('click', function(){
       
-      let username = document.getElementById('username').value.trim();
+      let username = document.getElementById('email').value.trim();
       let password = document.getElementById('password').value.trim();
 
    
@@ -36,4 +36,13 @@ const loginBox = document.getElementById("loginBox");
     // Redirigir
     window.location.href = "index.html";
   })
+  });
+
+const form = document.getElementById("loginForm");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita que se “envíen datos”
+    if (form.checkValidity()) {
+      window.location.href = "index.html"; // Redirige si todo es válido
+    }
   });
