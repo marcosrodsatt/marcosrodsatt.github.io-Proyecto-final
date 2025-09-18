@@ -33,11 +33,12 @@ const loginBox = document.getElementById("loginBox");
     // Guardar en sesión
     sessionStorage.setItem("user", username);
 
-    
+    // Redirigir
+   
   })
   });
 
-const form = document.getElementById("loginForm");
+ const form = document.getElementById("loginForm");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault(); // Evita que se “envíen datos”

@@ -40,7 +40,7 @@ function setCatID(id) {
 }
 
 function setProdId(id) {
-    localStorage.setItem("prodID", id);
+    localStorage.setItem("prodId", id);
      window.location = "product-info.html";
 }
 /*Funcion para agregar los productos en forma de div*/
@@ -53,7 +53,7 @@ function showProductList(){
             ((maxCount == undefined) || (parseInt(product.soldCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" onclick="setCatID(${product.id})">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" onclick="setProdId(${product.id})">
                     <div class="card h-100 shadow-sm cursor-active">
                         <img src="${product.image}" alt="${product.description}" class="card-img-top">
                     <div class="card-body d-flex flex-column">
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             let data = resultObj.data;
             document.getElementById("catName").innerHTML = data.catName;
-            document.getElementById("catDescription").innerHTML = data.catDescription; 
+            document.getElementById("catDescription").innerHTML = data.description; 
             currentProductsArray = resultObj.data.products;
             sortAndShowProducts(ORDER_BY_PROD_COUNT, currentProductsArray);
         }
