@@ -184,3 +184,61 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#productGallery {
+    margin: 0 auto !important;
+    max-width: 100%;
+}
+
+.carousel-inner {
+    text-align: center;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-item img {
+    margin: 0 auto;
+    display: block;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* Asegurar que el carrusel no se desborde */
+.container .row .col-12.col-lg-8 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carousel {
+    height: 500px;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    border-radius: 50%; /* Hacerlo circular */
+    padding: 10px;
+}
+
+/* O si prefieres solo cambiar el color del icono */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Invierte los colores (blanco a negro) */
+}

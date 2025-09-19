@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,44 +31,63 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          <li class="nav-item"></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-    <div class="container my-4">
+
+  <!-- CONTENIDO -->
+  <div class="container my-4">
+    <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
     <h1 id="productName"></h1>
-    <img id="productImage" class="img-fluid mb-3" alt="Imagen producto">
-    <p id="productDescription"></p>
+
+    <!-- Carrusel dinámico -->
+    <div id="productGallery" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-indicators" id="productGalleryIndicators"></div>
+      <div class="carousel-inner" id="productGalleryInner"></div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#productGallery" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productGallery" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- Fallback si no hay imágenes -->
+    <img id="productImage" class="img-fluid mb-3" alt="Imagen producto" style="display:none;">
+
+    <p class="mt-3" id="productDescription"></p>
     <p><strong id="productCost"></strong></p>
     <small id="productSold"></small>
+    </div>
   </div>
-  
+  </div>
+
+  <!-- FOOTER -->
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+
+  <!-- SPINNER -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div></div><div></div><div></div><div></div>
     </div>
   </div>
+
+  <!-- SCRIPTS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-
 </body>
-
-
 
 </html>
 
