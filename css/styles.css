@@ -242,3 +242,27 @@ a.custom-card:hover {
 .carousel-control-next-icon {
     filter: invert(1); /* Invierte los colores (blanco a negro) */
 }
+
+#ratingInput {
+  display: flex;
+  justify-content: left;
+  flex-direction: row-reverse; /* Invertir para que el primer input esté a la derecha */
+}
+
+#ratingInput input[type="radio"] {
+  display: none;
+}
+
+#ratingInput label {
+  font-size: 1.5em;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* Seleccionar todas las estrellas anteriores a la seleccionada */
+#ratingInput input[type="radio"]:checked ~ label,
+#ratingInput label:hover,
+#ratingInput label:hover ~ label {
+  color: #ffc107;
+}
