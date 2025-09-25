@@ -242,8 +242,6 @@ a.custom-card:hover {
 .carousel-control-next-icon {
     filter: invert(1); /* Invierte los colores (blanco a negro) */
 }
-<<<<<<< HEAD
-=======
 
 #ratingInput {
   display: flex;
@@ -268,4 +266,3 @@ a.custom-card:hover {
 #ratingInput label:hover ~ label {
   color: #ffc107;
 }
->>>>>>> 5304cf3 (Actualizado Product-info)

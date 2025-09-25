@@ -1,8 +1,6 @@
 // 🚀 Obtengo el productID del localStorage
 let prodId = localStorage.getItem("prodId");
 
-<<<<<<< HEAD
-=======
 // Validar que prodId exista
 if (!prodId) {
   console.error("No se encontró prodId en localStorage");
@@ -11,7 +9,6 @@ if (!prodId) {
   // window.location.href = "index.html"; // Descomentar si necesitas redirigir
 }
 
->>>>>>> 5304cf3 (Actualizado Product-info)
 // Helpers para armar carrusel
 function buildIndicators(imagesLen) {
   let html = "";
@@ -35,11 +32,6 @@ function buildSlides(images) {
   `).join("");
 }
 
-<<<<<<< HEAD
-document.addEventListener("DOMContentLoaded", function () {
-  fetch(`https://japceibal.github.io/emercado-api/products/${prodId}.json`)
-    .then(response => response.json())
-=======
 function renderComments(comments) {
   const commentsContainer = document.getElementById("productComments");
   commentsContainer.innerHTML = ""; // Limpiar antes de agregar nuevos
@@ -105,7 +97,6 @@ function loadProductData() {
       }
       return response.json();
     })
->>>>>>> 5304cf3 (Actualizado Product-info)
     .then(product => {
       // Datos de texto
       document.getElementById("productName").innerText = product.name;
@@ -131,8 +122,6 @@ function loadProductData() {
         fallbackImgEl.alt = "Imagen del producto";
         fallbackImgEl.style.display = "block";
       }
-<<<<<<< HEAD
-=======
 
       // Mostrar productos relacionados
       const relatedProducts = product.relatedProducts || [];
@@ -142,7 +131,6 @@ function loadProductData() {
       } else {
         document.getElementById("relatedProductsContainer").innerHTML = "<p>No hay productos relacionados.</p>";
       }
->>>>>>> 5304cf3 (Actualizado Product-info)
     })
     .catch(err => {
       console.error("Error cargando producto:", err);
@@ -153,10 +141,6 @@ function loadProductData() {
         fallbackImgEl.style.display = "block";
       }
     });
-<<<<<<< HEAD
-});
-
-=======
 }
 
 // Función para cargar comentarios del producto
@@ -234,4 +218,3 @@ document.getElementById("commentForm").addEventListener("submit", function (e) {
   document.getElementById("userComment").value = "";
   document.querySelectorAll('input[name="rating"]').forEach(radio => radio.checked = false);
 });
->>>>>>> 5304cf3 (Actualizado Product-info)
