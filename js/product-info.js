@@ -185,7 +185,7 @@ document.getElementById("commentForm").addEventListener("submit", function (e) {
     return;
   }
   
-  const user = "Tú"; // Puedes cambiarlo por un campo de nombre si quieres
+  const user = sessionStorage.getItem("user") || "Usuario anónimo"; //cambiado "tú" por usuario guardado en sessionStorage
   const now = new Date().toISOString().slice(0, 19).replace("T", " "); // Fecha y hora actual
 
   // Crear objeto comentario
