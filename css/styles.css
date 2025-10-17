@@ -266,3 +266,187 @@ a.custom-card:hover {
 #ratingInput label:hover ~ label {
   color: #ffc107;
 }
+
+/* 🌞 MODO CLARO (por defecto) */
+body {
+  background-color: #ffffff;
+  color: #212529;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 🌙 MODO OSCURO */
+body.dark-mode {
+  background-color: #121212;
+  color: #e4e4e4;
+}
+
+/* 🔳 Divs y secciones */
+body.dark-mode div,
+body.dark-mode section,
+body.dark-mode main,
+body.dark-mode .container,
+body.dark-mode .card {
+  background-color: #1e1e1e !important;
+  color: #e4e4e4 !important;
+  border-color: #333 !important;
+}
+
+/* 🧭 Navbar y footer */
+body.dark-mode .navbar {
+  background-color: #222 !important;
+}
+
+body.dark-mode footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+}
+
+/* 🔘 Botones */
+body.dark-mode .btn-primary {
+  background-color: #3a6ff7;
+  border-color: #3a6ff7;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #295ad8;
+}
+
+/* 🧾 Formularios */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2a2a2a;
+  color: #eee;
+  border-color: #444;
+}
+
+body.dark-mode input::placeholder {
+  color: #aaa;
+}
+
+/* 🔗 Enlaces */
+body.dark-mode a {
+  color: #66b3ff;
+}
+
+body.dark-mode a:hover {
+  color: #99ccff;
+}
+
+/* --- ESTILOS PARA LA PÁGINA DE PERFIL (my-profile.html) --- */
+
+/* Contenedor principal del perfil, centrado en la página */
+.profile-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
+  max-width: 500px;
+  width: 100%;
+  text-align: center; /* Centra el contenido interno */
+  margin: 40px auto; /* Centra la tarjeta vertical y horizontalmente */
+  transition: all 0.3s ease;
+}
+
+/* Contenedor para la foto de perfil */
+.profile-photo {
+  position: relative; /* Necesario para posicionar el input de archivo */
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 25px auto; /* Centra el círculo y le da espacio debajo */
+  border-radius: 50%; /* Hace que el contenedor sea circular */
+  overflow: hidden; /* Oculta las partes de la imagen que se salen del círculo */
+  border: 4px solid #0d6efd; /* Borde azul a juego con el botón de Bootstrap */
+}
+
+/* Estilo de la imagen de perfil */
+#profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el círculo sin deformarse */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto de zoom al pasar el ratón sobre la foto */
+.profile-photo:hover #profile-image {
+  transform: scale(1.1);
+  opacity: 0.7;
+}
+
+/* Input para subir la foto. Se hace invisible y se superpone a la imagen */
+#upload-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Lo hace completamente transparente */
+  cursor: pointer; /* Muestra un cursor de mano para indicar que es clickeable */
+}
+
+/* Estilos para el formulario del perfil */
+#profile-form {
+  text-align: left; /* Alinea las etiquetas y los inputs a la izquierda */
+}
+
+/* Estilos para las etiquetas del formulario */
+#profile-form .form-label {
+  font-weight: 600; /* Texto un poco más grueso */
+  color: #333;
+}
+
+/* Estilos para los campos de texto, con un toque moderno */
+#profile-form .form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto visual al seleccionar un campo de texto */
+#profile-form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilo para el botón de guardar */
+#profile-form .btn-primary.w-100 {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  margin-top: 15px; /* Espacio extra arriba del botón */
+  transition: background-color 0.2s ease;
+}
+
+/* Ajustes para pantallas más pequeñas (móviles) */
+@media (max-width: 576px) {
+  .profile-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* --- INTEGRACIÓN MODO OSCURO PARA PERFIL --- */
+
+/* El contenedor del perfil hereda los colores de tus otras tarjetas */
+body.dark-mode .profile-container {
+  background-color: #1e1e1e !important;
+  color: #e4e4e4 !important;
+  border: 1px solid #333 !important;
+}
+
+/* Las etiquetas del formulario también cambian de color */
+body.dark-mode #profile-form .form-label {
+  color: #e4e4e4;
+}
+
+/* El borde de la foto de perfil se adapta al azul de tu modo oscuro */
+body.dark-mode .profile-photo {
+    border-color: #3a6ff7;
+}
