@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function(){
   if (username && navList) {
     const userHtml = `
       <li class="nav-item">
-        <div class="nav-link">
+        <a class="nav-link" href="my-profile.html">
           ${username}
-        </div>
+        </a>
       </li>`;
     
     const emptyLi = navList.querySelector('li:last-child');
@@ -69,3 +69,25 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   })
    
+// === MODO OSCURO / CLARO ===
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Cargar preferencia guardada
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+  }
+
+  // Escuchar el click del botón
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+
+      // Guardar la preferencia
+      const theme = body.classList.contains("dark-mode") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+    });
+  }
+});

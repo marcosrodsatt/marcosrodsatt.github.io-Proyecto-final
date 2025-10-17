@@ -9,19 +9,36 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    /* --- Ajustes visuales del perfil --- */
+    .profile-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: #f9f9f9;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+    body.dark-mode .profile-container {
+      background-color: #222;
+      color: #eee;
+    }
+
+    .profile-photo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-photo img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ccc;
+    }
+
+    .profile-photo input {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -46,14 +63,43 @@
           </li>
           <li class="nav-item">
           </li>
+          <button id="theme-toggle" class="btn btn-sm btn-outline-secondary">
+  🌞 / 🌜
+</button>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="profile-container">
+      <div class="profile-photo">
+        <img id="profile-image" src="img/img_perfil.png" alt="Foto de perfil">
+        <input type="file" id="upload-photo" accept="image/*">
+      </div>
+
+       <form id="profile-form">
+          <div class="mb-3">
+            <label for="first-name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="first-name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="last-name" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="last-name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="phone">
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+        </form>
       </div>
     </div>
   </main>
