@@ -1,6 +1,6 @@
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
-const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/"; //eliminado el 101.json
 const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/";
 const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/";
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function(){
   if (username && navList) {
     const userHtml = `
       <li class="nav-item">
-        <div class="nav-link">
+        <a class="nav-link" href="my-profile.html">
           ${username}
-        </div>
+        </a>
       </li>`;
     
     const emptyLi = navList.querySelector('li:last-child');
@@ -67,4 +67,27 @@ document.addEventListener("DOMContentLoaded", function(){
     
     navList.innerHTML += userHtml;
     }
-}); 
+  })
+   
+// === MODO OSCURO / CLARO ===
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Cargar preferencia guardada
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+  }
+
+  // Escuchar el click del botón
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+
+      // Guardar la preferencia
+      const theme = body.classList.contains("dark-mode") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+    });
+  }
+});

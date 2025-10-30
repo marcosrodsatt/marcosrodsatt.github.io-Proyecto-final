@@ -28,14 +28,14 @@
   <!-- Caja de login -->
 <div class="login-box card shadow-lg border-0 p-4 col-11 col-sm-8 col-md-6 col-lg-4" id="loginBox">
   <h2 class="text-center mb-4 fw-bold">¡Bienvenido a<br>e-Commerce!</h2>
-  <form>
+  <form id="loginForm">
     <div class="mb-3">
-      <input id="username" type="text" class="form-control form-control-lg" placeholder="Usuario" required>
+    <input id="email" type="email" class="form-control form-control-lg" placeholder="ejemplo@email.com" required> <!-- Se borró el pattern-->
     </div>
     <div class="mb-3">
       <input id="password" type="password" class="form-control form-control-lg" placeholder="Contraseña" required>
     </div>
-    <button type="button" id="submitbttn" class="btn btn-primary btn-lg w-100">
+    <button type="submit" id="submitbttn" class="btn btn-primary btn-lg w-100">
       Ingresar
     </button>
   </form>

@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,41 +31,114 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          <li class="nav-item"></li>
+          <button id="theme-toggle" class="btn btn-sm btn-outline-secondary">
+  🌞 / 🌜
+</button>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+  <!-- CONTENIDO -->
+  <div class="container my-4">
+    <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+    <h1 id="productName"></h1>
+
+    <!-- Carrusel dinámico -->
+    <div id="productGallery" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-indicators" id="productGalleryIndicators"></div>
+      <div class="carousel-inner" id="productGalleryInner"></div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#productGallery" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productGallery" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- Fallback si no hay imágenes -->
+    <img id="productImage" class="img-fluid mb-3" alt="Imagen producto" style="display:none;">
+
+    <p class="mt-3" id="productDescription"></p>
+    <p><strong id="productCost"></strong></p>
+    <small id="productSold"></small>
+    </div>
+  </div>
+  </div>
+  
+  <!-- CALIFICACIONES -->
+  <div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h3>Calificaciones</h3>
+        <div id="productComments">
+           
+        </div>
+        <!-- AGREGAR COMENTARIO -->
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <h4>Agregar tu comentario</h4>
+      <form id="commentForm">
+        <div class="mb-3">
+          <label for="userComment" class="form-label">Tu comentario</label>
+          <textarea class="form-control" id="userComment" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Tu calificación</label>
+          <div id="ratingInput">
+            <input type="radio" name="rating" value="5" id="star1" required> <label for="star1">★</label>
+            <input type="radio" name="rating" value="4" id="star2"> <label for="star2">★</label>
+            <input type="radio" name="rating" value="3" id="star3"> <label for="star3">★</label>
+            <input type="radio" name="rating" value="2" id="star4"> <label for="star4">★</label>
+            <input type="radio" name="rating" value="1" id="star5"> <label for="star5">★</label> <!-- invertí los valores para que se rellenen bien las estrellas -->
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar comentario</button>
+      </form>
+    </div>
+  </div>
+</div>
       </div>
     </div>
-  </main>
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h3>Productos relacionados</h3>
+        <div id="relatedProductsContainer" class="row">
+          <!-- Aquí se cargarán los productos relacionados -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+
+  <!-- SPINNER -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div></div><div></div><div></div><div></div>
     </div>
   </div>
+
+  <!-- SCRIPTS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-
 </body>
 
-
-
 </html>
+
+
