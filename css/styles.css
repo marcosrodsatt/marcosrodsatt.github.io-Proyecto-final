@@ -450,3 +450,24 @@ body.dark-mode #profile-form .form-label {
 body.dark-mode .profile-photo {
     border-color: #3a6ff7;
 }
+
+/* Estilos para el modo oscuro en la tabla */
+body.dark-mode .table,
+body.dark-mode .table thead th,
+body.dark-mode .table tbody td {
+  color: #ffffff; /* Texto blanco */
+  background-color: #212529; /* Fondo oscuro similar al de Bootstrap */
+  border-color: #495057; /* Bordes oscuros */
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #343a40;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+  background-color: #495057;
+}
+
+#emptyCart {
+  display: bottom;
+}

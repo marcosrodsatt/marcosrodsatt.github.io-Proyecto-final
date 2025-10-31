@@ -68,7 +68,18 @@ document.addEventListener("DOMContentLoaded", function(){
     navList.innerHTML += userHtml;
     }
   })
-   
+
+function updateCartBadge() {
+      const badge = document.getElementById("cartBadge");
+      if (!badge) return;
+      const cart = JSON.parse(localStorage.getItem("cartItems") || "[]");
+      const total = cart.reduce((acc, it) => acc + (Number(it.count) || 0), 0);
+      badge.textContent = total;
+    }
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
+    window.addEventListener("storage", (e) => {
+      if (e.key === "cartItems") updateCartBadge();
+    });   
 // === MODO OSCURO / CLARO ===
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;

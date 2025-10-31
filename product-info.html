@@ -31,6 +31,12 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <li class="nav-item">
+            <a href="cart.html" class="nav-link position-relative">
+              Mi carrito
+              <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+          </li>
           <li class="nav-item"></li>
           <button id="theme-toggle" class="btn btn-sm btn-outline-secondary">
   🌞 / 🌜
@@ -45,6 +51,7 @@
     <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
     <h1 id="productName"></h1>
+
 
     <!-- Carrusel dinámico -->
     <div id="productGallery" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
@@ -66,11 +73,14 @@
 
     <p class="mt-3" id="productDescription"></p>
     <p><strong id="productCost"></strong></p>
-    <small id="productSold"></small>
+    <small id="productSold"></small> <br>
+    <!-- Botón de compra -->
+    <button id="btnComprar" class="btn btn-primary">Comprar</button>
     </div>
   </div>
   </div>
   
+
   <!-- CALIFICACIONES -->
   <div class="container my-4">
     <div class="row justify-content-center">

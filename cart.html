@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body>
+  <!-- Navbar (igual que en tus otras páginas) -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,37 +30,90 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a href="cart.html" class="nav-link position-relative">
+              Mi carrito
+              <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
           </li>
+          <li class="nav-item"></li>
+          <button id="theme-toggle" class="btn btn-sm btn-outline-secondary">
+  🌞 / 🌜
+</button>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+  <!-- Contenido principal del carrito -->
+  <main class="container my-4">
+    <h2 class="mb-3">Carrito de compras</h2>
+
+    <!-- Tabla de items -->
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio (unidad)</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cartItems"><!-- Render JS --></tbody>
+        <tbody>
+          <tr id="emptyCart" class="d-none">
+            <td colspan="3" class="text-center text-muted py-4">
+              No hay productos en el carrito.
+            </td>
+          </tr>
+        </tbody> 
+      </table>
+    </div>
+
+    <!-- Totales -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Resumen</h5>
+        <ul class="list-unstyled">
+          <li>Subtotal: <strong id="subtotalText">USD 0.00</strong></li>
+          <li>Total: <strong id="totalText">USD 0.00</strong></li>
+        </ul>
+        <button id="confirmBtn" class="btn btn-success">Confirmar compra</button>
       </div>
     </div>
   </main>
+
+  <!-- Footer + Spinner (idéntico a tus páginas) -->
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
+      <p class="float-right">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de la evaluación de Jóvenes a Programar</p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script>
+    // Badge global (se usa en todas las páginas)
+    function updateCartBadge() {
+      const badge = document.getElementById("cartBadge");
+      if (!badge) return;
+      const cart = JSON.parse(localStorage.getItem("cartItems") || "[]");
+      const total = cart.reduce((acc, it) => acc + (Number(it.count) || 0), 0);
+      badge.textContent = total;
+    }
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
+    window.addEventListener("storage", (e) => {
+      if (e.key === "cartItems") updateCartBadge();
+    });
+  </script>
   <script src="js/cart.js"></script>
 </body>
-
 </html>
