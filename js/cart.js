@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartTable();
   initConfirm();
 });
-// Configuración: tasa UYU -> USD (ajustala si tu profe pide otra)
-const UYU_TO_USD = 40; // por ejemplo 40 UYU = 1 USD
+// Configuración: tasa UYU -> USD
+const UYU_TO_USD = 40; 
 
-// Convierte cualquier valor a USD (si ya es USD, devuelve igual)
+// Convierte cualquier valor a USD
 function toUSD(amount, currency) {
   if (!currency) return Number(amount) || 0;
   if (currency.toUpperCase() === "UYU") return Number(amount) / UYU_TO_USD;
-  // Si ya es USD o moneda desconocida, asumimos USD directo
+  
   return Number(amount) || 0;
 }
 
@@ -25,10 +25,10 @@ function formatMoney(currency, amount) {
   return `${currency} ${v.toFixed(2)}`;
 }
 
-// Estado principal
+
 let cartItems = [];
 
-// --- Helpers de storage ---
+
 function getCart() {
   try {
     return JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -45,7 +45,7 @@ function setCart(arr) {
   }
 }
 
-// --- Migración desde el prototipo de 1 producto (cartProduct) ---
+
 function migrateFromLegacySingle() {
   const singleRaw = localStorage.getItem("cartProduct");
   if (!singleRaw) return null;
@@ -132,7 +132,7 @@ function renderCartTable() {
   updateTotals();
 }
 
-// --- Eventos: cantidad / eliminar ---
+
 function bindCartEvents() {
   document.querySelectorAll(".qty-input").forEach(inp => {
     inp.addEventListener("input", (e) => {
@@ -175,7 +175,7 @@ function updateTotals() {
     return acc + toUSD(original, it.currency);
   }, 0);
 
-  // Opcional: también podríamos mostrar subtotal en moneda base (si todos son la misma moneda)
+  
   const subEl = document.getElementById("subtotalText");
   const totEl = document.getElementById("totalText");
   if (subEl) subEl.textContent = formatMoney("USD", totalUSD); // mostramos subtotal convertido a USD

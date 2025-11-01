@@ -277,7 +277,7 @@ if (commentFormEl) {
   });
 }
 
-// ===== Bloque "Comprar" =====
+
 
 // Storage helpers para carrito
 function getCart() {
@@ -296,7 +296,7 @@ function setCart(arr) {
   }
 }
 
-// Añadir producto al carrito (usa unitCost)
+// Añadir producto al carrito 
 function addToCart(product, qty = 1) {
   if (!product || !product.id) return;
   const cart = getCart();
@@ -323,12 +323,12 @@ function addToCart(product, qty = 1) {
   setCart(cart);
 }
 
-// Asegurar productData (si no existe, intenta fetch)
+// Asegurar productData 
 async function ensureProductData() {
   if (window.productData && window.productData.id) return window.productData;
   if (!prodId) throw new Error("prodId no disponible");
 
-  // Intentar getJSONData si existe
+  
   if (typeof getJSONData === "function" && typeof PRODUCT_INFO_URL !== "undefined" && typeof EXT_TYPE !== "undefined") {
     try {
       const res = await getJSONData(PRODUCT_INFO_URL + prodId + EXT_TYPE);
@@ -364,7 +364,7 @@ async function ensureProductData() {
   return window.productData;
 }
 
-// Evento del botón Comprar (usa #btnComprar de tu HTML)
+
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btnComprar");
   if (!btn) return;

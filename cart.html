@@ -11,7 +11,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar (igual que en tus otras páginas) -->
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -60,7 +60,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody id="cartItems"><!-- Render JS --></tbody>
+        <tbody id="cartItems"></tbody>
         <tbody>
           <tr id="emptyCart" class="d-none">
             <td colspan="3" class="text-center text-muted py-4">
@@ -84,7 +84,7 @@
     </div>
   </main>
 
-  <!-- Footer + Spinner (idéntico a tus páginas) -->
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -101,7 +101,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script>
-    // Badge global (se usa en todas las páginas)
+    // Badge global
     function updateCartBadge() {
       const badge = document.getElementById("cartBadge");
       if (!badge) return;
