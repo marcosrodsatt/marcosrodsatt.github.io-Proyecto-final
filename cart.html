@@ -71,8 +71,112 @@
       </table>
     </div>
 
-    <!-- Totales -->
-    <div class="card">
+    <!-- Nueva Sección de Checkout -->
+    <section class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Finalizar Compra</h3>
+
+        <!-- Tipo de envío -->
+        <div class="mb-4">
+          <h5>Tipo de envío</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="premium" value="premium">
+            <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="express" value="express">
+            <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="standard" value="standard">
+            <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+          </div>
+        </div>
+
+        <!-- Dirección de envío -->
+        <div class="mb-4">
+          <h5>Dirección de envío</h5>
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label for="depto" class="form-label">Departamento</label>
+              <input type="text" class="form-control" id="depto">
+            </div>
+            <div class="col-md-6">
+              <label for="localidad" class="form-label">Localidad</label>
+              <input type="text" class="form-control" id="localidad">
+            </div>
+            <div class="col-md-6">
+              <label for="calle" class="form-label">Calle</label>
+              <input type="text" class="form-control" id="calle">
+            </div>
+            <div class="col-md-3">
+              <label for="numero" class="form-label">Número</label>
+              <input type="text" class="form-control" id="numero">
+            </div>
+            <div class="col-md-3">
+              <label for="esquina" class="form-label">Esquina</label>
+              <input type="text" class="form-control" id="esquina">
+            </div>
+          </div>
+        </div>
+
+        <!-- Forma de pago -->
+        <div class="mb-4">
+          <h5>Forma de pago</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+            <label class="form-check-label" for="creditCard">Tarjeta de crédito</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+            <label class="form-check-label" for="bankTransfer">Transferencia bancaria</label>
+          </div>
+          <!-- Campos dinámicos para forma de pago -->
+          <div id="paymentFieldsContainer" class="mt-3 d-none">
+            <!-- Campos para tarjeta de crédito -->
+            <div id="creditCardFields" class="d-none">
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <label for="cardNumber" class="form-label">Número de tarjeta</label>
+                  <input type="text" class="form-control" id="cardNumber">
+                </div>
+                <div class="col-md-3">
+                  <label for="cardCVV" class="form-label">CVV</label>
+                  <input type="text" class="form-control" id="cardCVV">
+                </div>
+                <div class="col-md-3">
+                  <label for="cardExpiry" class="form-label">Vencimiento (MM/AA)</label>
+                  <input type="text" class="form-control" id="cardExpiry">
+                </div>
+              </div>
+            </div>
+            <!-- Campos para transferencia -->
+            <div id="bankTransferFields" class="d-none">
+              <label for="transferDetails" class="form-label">Código de operación</label>
+              <input type="text" class="form-control" id="transferDetails">
+            </div>
+          </div>
+        </div>
+
+        <!-- Costos -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Costos</h5>
+            <ul class="list-unstyled">
+              <li>Subtotal: <strong id="newSubtotalText">USD 0.00</strong></li>
+              <li>Costo de envío: <strong id="shippingCostText">USD 0.00</strong></li>
+              <li><h6 class="d-inline">Total: </h6><strong id="newTotalText">USD 0.00</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Botón Finalizar Compra -->
+        <button id="purchaseBtn" class="btn btn-success">Finalizar compra</button>
+      </div>
+    </section>
+
+    <!-- Resumen Original (Opcional - Se puede ocultar si se desea) -->
+    <div class="card d-none">
       <div class="card-body">
         <h5 class="card-title">Resumen</h5>
         <ul class="list-unstyled">
