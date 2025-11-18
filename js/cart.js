@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Configuración: tasa UYU -> USD
 const UYU_TO_USD = 40;
+const CART_ENDPOINT = "http://localhost:3000/api/cart";
 
 // Convierte cualquier valor a USD
 function toUSD(amount, currency) {
@@ -36,6 +37,26 @@ let cartItems = [];
 // Variables para manejar la selección del usuario
 let selectedShippingType = null;
 let selectedPaymentMethod = null;
+
+async function sendCartToBackend(items, shipping, address) {
+  const token = sessionStorage.getItem("token");
+  if (!token) throw new Error("Falta el token de sesión");
+
+  const resp = await fetch(CART_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify({ items, shipping, address })
+  });
+
+  const data = await resp.json();
+  if (!resp.ok) {
+    throw new Error(data.message || "No se pudo guardar el carrito");
+  }
+  return data;
+}
 
 function getCart() {
   try {
@@ -307,27 +328,33 @@ function initPurchase() {
       }
     }
 
-    // Si todas las validaciones pasan
-    alert("✅ ¡Has comprado con éxito!");
-    cartItems = [];
-    setCart(cartItems);
-    renderCartTable();
-    // Opcional: Resetear los campos de formulario
-    document.getElementById('depto').value = '';
-    document.getElementById('localidad').value = '';
-    document.getElementById('calle').value = '';
-    document.getElementById('numero').value = '';
-    document.getElementById('esquina').value = '';
-    document.querySelectorAll('input[name="shippingType"]').forEach(r => r.checked = false);
-    document.querySelectorAll('input[name="paymentMethod"]').forEach(r => r.checked = false);
-    document.getElementById('paymentFieldsContainer').classList.add('d-none');
-    document.getElementById('creditCardFields').classList.add('d-none');
-    document.getElementById('bankTransferFields').classList.add('d-none');
-    selectedShippingType = null;
-    selectedPaymentMethod = null;
+    // Si todas las validaciones pasan, guardamos en el backend
+    sendCartToBackend(cartItems, selectedShippingType, {
+      depto, localidad, calle, numero, esquina
+    })
+    .then(() => {
+      alert("Has comprado con exito!");
+      cartItems = [];
+      setCart(cartItems);
+      renderCartTable();
+      document.getElementById('depto').value = "";
+      document.getElementById('localidad').value = "";
+      document.getElementById('calle').value = "";
+      document.getElementById('numero').value = "";
+      document.getElementById('esquina').value = "";
+      document.querySelectorAll('input[name="shippingType"]').forEach(r => r.checked = false);
+      document.querySelectorAll('input[name="paymentMethod"]').forEach(r => r.checked = false);
+      document.getElementById('paymentFieldsContainer').classList.add('d-none');
+      document.getElementById('creditCardFields').classList.add('d-none');
+      document.getElementById('bankTransferFields').classList.add('d-none');
+      selectedShippingType = null;
+      selectedPaymentMethod = null;
+    })
+    .catch(err => {
+      alert("No pudimos guardar la compra: " + err.message);
+    });
   });
 }
-
 // Confirmar compra (vacía carrito)
 function initConfirm() {
   const btn = document.getElementById("confirmBtn");
@@ -337,7 +364,7 @@ function initConfirm() {
       alert("Tu carrito está vacío.");
       return;
     }
-    alert("✅ ¡Has comprado con éxito!");
+    alert("Has comprado con exito!");
     cartItems = [];
     setCart(cartItems);
     renderCartTable();

@@ -1,10 +1,11 @@
-const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
-const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
-const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/"; //eliminado el 101.json
-const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/";
-const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/";
-const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
-const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
+const API_BASE = "http://localhost:3000/api";
+const CATEGORIES_URL = `${API_BASE}/cats/cat.json`;
+const PUBLISH_PRODUCT_URL = `${API_BASE}/sell/publish.json`;
+const PRODUCTS_URL = `${API_BASE}/cats_products/`; //eliminado el 101.json
+const PRODUCT_INFO_URL = `${API_BASE}/products/`;
+const PRODUCT_INFO_COMMENTS_URL = `${API_BASE}/products_comments/`;
+const CART_INFO_URL = `${API_BASE}/user_cart/`;
+const CART_BUY_URL = `${API_BASE}/cart/buy.json`;
 const EXT_TYPE = ".json";
 
 let showSpinner = function(){
@@ -18,7 +19,11 @@ let hideSpinner = function(){
 let getJSONData = function(url){
     let result = {};
     showSpinner();
-    return fetch(url)
+
+    const token = sessionStorage.getItem("token");
+    const headers = token ? { "Authorization": `Bearer ${token}` } : {};
+
+    return fetch(url, { headers })
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -42,8 +47,8 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(){
 
-// Si no hay sesión iniciada → volver al login
-  if (!sessionStorage.getItem("user")) {
+// Si no hay sesión iniciada -> volver al login
+  if (!sessionStorage.getItem("user") || !sessionStorage.getItem("token")) {
     alert ("Debes iniciar sesión")
     window.location.href = "login.html";
   }
@@ -60,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
         </a>
       </li>`;
     
-    const emptyLi = navList.querySelector('li:last-child');
+    const emptyLi = navList?.querySelector?.('li:last-child');
     if (emptyLi) {
       navList.removeChild(emptyLi);
     }
